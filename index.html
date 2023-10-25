@@ -19,6 +19,8 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -39,8 +41,14 @@
         <p> Professional C++ and (I hope) Rust developer </p>
       </div>
     </div>
+  </div>
+
+
+
+
 
     <div class="navbar">
+        <div class="container">
         <ul class="navbar-list">
             <li class="navbar-item">
                 <a class="navbar-link" href="#intro">intro</a>
@@ -61,8 +69,11 @@
                 <a class="navbar-link" href="#wizard">Wizard :)</a>
             </li>
         </ul>
+        </div>
     </div>
 
+
+    <div class="container">
     <div class="row" id="intro">
         <div class="column" style="margin-top: 5%;">
             <p> I'm C++ developer with more than 5 years of experience.</p>
@@ -300,7 +311,7 @@
     </div>
 
     <div class="row header" id="wizard">
-        <div class="column" style="margin-top: 5%;">
+        <div class="column" style="margin-top: 10%;">
             <h6 class="docs-header">Wizard</h6>
         </div>
     </div>
@@ -311,9 +322,9 @@
         
             The final result did not meet my expectations but I hope the "game" still will give a bit of fun to all of my potential employeers and visitors of that website. </p>
 
-            <p>Please be aware that I'm programmer, not graphic designer. Please be understanding.</p>
+            <p>Please be aware that I'm programmer, not graphic designer. :)</p>
             
-            <p>All actions in the game are done by left mouse button.</p>
+            <p>All actions in the game are done by left mouse button. Game loading can take some time - please be patient.</p>
         </div>
     </div>
 
@@ -331,7 +342,7 @@
     </div>
 
     <div class="row">
-        <div class="column" style="margin-top: 5%; margin-bottom: 15%">
+        <div class="column" style="margin-top: 5%; padding-bottom: 45%">
             <a href="https://www.linkedin.com/in/micha%C5%82-jarmakowicz-72126925b/">My Profile on Linkedin</a>
         </div>
     </div>
@@ -342,7 +353,27 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 
+<script>
+    var $window = $(window);
+    var $nav = $('.navbar');
+    var navOffsetTop = $nav.offset().top;
+    var $body = $('body');
 
+    function init() {
+        $window.on('scroll', onScroll)
+    }
+
+    function onScroll() {
+        if(navOffsetTop < $window.scrollTop() && !$body.hasClass('has-docked-nav')) {
+          $body.addClass('has-docked-nav')
+        }
+        if(navOffsetTop > $window.scrollTop() && $body.hasClass('has-docked-nav')) {
+          $body.removeClass('has-docked-nav')
+        }
+    }
+
+    init();
+</script>
 
 
 </html>
